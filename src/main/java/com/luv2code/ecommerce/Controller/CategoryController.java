@@ -34,8 +34,8 @@ public class CategoryController {
     @GetMapping("add-user")
     public String addUser(){
         Category user = new Category();
-        user.setCategoryName("سوبر ماركت");
-        user.setId(13L);
+        user.setCategoryName("سوبر ");
+        user.setId(2L);
         user.setImageUrl("image2");
         categoryRepository.save(user);
         return "User added successfully";
