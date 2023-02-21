@@ -1,6 +1,4 @@
 
-COPY . .
-RUN mvn clean package -DskipTests
 
 FROM openjdk:18
 
