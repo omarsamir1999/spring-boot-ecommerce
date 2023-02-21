@@ -6,6 +6,7 @@ import com.luv2code.ecommerce.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,13 +32,8 @@ public class CategoryController {
         return "Number of users = "+numberUsers;
     }
 
-    @GetMapping("add-user")
-    public String addUser(){
-        Category user = new Category();
-        user.setCategoryName("سوبر ");
-        user.setId(2L);
-        user.setImageUrl("image2");
-        categoryRepository.save(user);
-        return "User added successfully";
+    @PostMapping("/add")
+    public Category addTask(@Valid @RequestBody Category category){
+        return categoryRepository.save(category);
     }
 }
