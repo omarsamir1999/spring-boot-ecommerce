@@ -1,3 +1,8 @@
+
+FROM maven:3.8.2-jdk-18 AS build
+COPY . .
+RUN mvn clean package -DskipTests
+
 FROM openjdk:18
 
 LABEL maintainer="javaguides.net"
