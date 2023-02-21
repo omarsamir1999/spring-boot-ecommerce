@@ -35,7 +35,7 @@ public class CategoryController {
     public String addUser(){
         Category user = new Category();
         user.setCategoryName("سوبر ماركت");
-        user.setId(1L);
+        user.setId(13L);
         user.setImageUrl("image2");
         categoryRepository.save(user);
         return "User added successfully";
