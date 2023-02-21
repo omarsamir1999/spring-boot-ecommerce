@@ -5,7 +5,7 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:18
 
-LABEL maintainer="javaguides.net"
+LABEL maintainer="javaguide.net"
 
 COPY --from=build  target/spring-boot-ecommerce-0.0.1-SNAPSHOT.jar spring-boot-ecommerce.jar
 EXPOSE 8080
