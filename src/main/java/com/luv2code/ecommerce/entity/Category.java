@@ -24,6 +24,10 @@ public class Category {
 
     @Column(name = "imageurl")
     private String imageUrl;
+
+    @Column(name = "sub_category_id")
+    private String subCategoryId;
+
     @OneToMany(mappedBy = "category")
     private List<SubCategory> subCategory;
 
