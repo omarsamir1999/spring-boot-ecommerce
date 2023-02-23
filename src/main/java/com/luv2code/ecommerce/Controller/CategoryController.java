@@ -26,23 +26,11 @@ public class CategoryController {
 
         return categoryRepository.findById(id).orElse(null);
     }
-    @GetMapping("count-users")
-    public String getCountUsers(){
-        long numberUsers = categoryRepository.count();
-        return "Number of users = "+numberUsers;
-    }
+
 
     @PostMapping("/add")
     public Category addTask(@Valid @RequestBody Category category){
         return categoryRepository.save(category);
     }
-    @GetMapping("add-user")
-    public String addUser(){
-        Category user = new Category();
-        user.setCategoryName("Render");
-        user.setImageUrl("Render");
-        user.setId(1L);
-        categoryRepository.save(user);
-        return "User added successfully";
-    }
+
 }
