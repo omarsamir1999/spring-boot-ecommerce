@@ -20,7 +20,7 @@ public class Product {
     @Column(name = "image_url")
     private String imageUrl;
     @Column(name = "price")
-    private String price;
+    private int price;
     @Column(name = "deal")
     private String deal;
 
