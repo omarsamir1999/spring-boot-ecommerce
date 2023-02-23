@@ -23,6 +23,7 @@ public class Product {
     private String price;
     @Column(name = "deal")
     private String deal;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id")
