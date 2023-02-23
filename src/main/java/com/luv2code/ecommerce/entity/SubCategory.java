@@ -29,4 +29,7 @@ public class SubCategory {
     private String imageUrl;
 
 
+    @OneToMany(mappedBy = "sub_category")
+    private List<Product> products;
+
 }
