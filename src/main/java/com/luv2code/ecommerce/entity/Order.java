@@ -1,5 +1,6 @@
 package com.luv2code.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -20,12 +21,10 @@ import java.util.List;
         @Column(name = "name")
         private String categoryName;
 
-        @Column(name = "imageurl")
+        @Column(name = "imageUrl")
         private String imageUrl;
 
         @Column(name = "quantity")
         private int quantity;
-
-
 
     }

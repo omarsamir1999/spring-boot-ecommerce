@@ -29,7 +29,7 @@ public class OrderController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("order/add")
     public Order addTask(@Valid @RequestBody Order order){
         return orderRepository.save(order);
     }

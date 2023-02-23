@@ -28,7 +28,7 @@ public class CategoryController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("category/add")
     public Category addTask(@Valid @RequestBody Category category){
         return categoryRepository.save(category);
     }
