@@ -1,7 +1,9 @@
 package com.luv2code.ecommerce.Controller;
 
 
+import com.luv2code.ecommerce.dao.ListOrderRepository;
 import com.luv2code.ecommerce.dao.OrderRepository;
+import com.luv2code.ecommerce.entity.ListOrder;
 import com.luv2code.ecommerce.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +18,17 @@ public class ListOrderController {
 
 
     @Autowired
-    private OrderRepository orderRepository;
+    private ListOrderRepository listOrderRepository;
 
     @GetMapping("listOrder")
-    List<Order> all() {
-        return orderRepository.findAll();
+    List<ListOrder> all() {
+        return listOrderRepository.findAll();
     }
 
     @GetMapping("listOrder/{id}")
-    Order one(@PathVariable Long id) {
+    ListOrder one(@PathVariable Long id) {
 
-        return orderRepository.findById(id).orElse(null);
+        return listOrderRepository.findById(id).orElse(null);
     }
 
 
