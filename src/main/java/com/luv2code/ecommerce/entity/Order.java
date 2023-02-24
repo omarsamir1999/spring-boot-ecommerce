@@ -1,5 +1,6 @@
 package com.luv2code.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -23,5 +24,10 @@ import javax.persistence.*;
 
         @Column(name = "quantity")
         private int quantity;
+
+        @JsonIgnore
+        @ManyToOne(fetch = FetchType.EAGER)
+        @JoinColumn(name = "list_order_id")
+        private ListOrder listOrder;
 
     }
