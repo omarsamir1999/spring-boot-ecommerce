@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="category")
+@Table(name="listOrder")
 // @Data -- known bug
 @Getter
 @Setter
