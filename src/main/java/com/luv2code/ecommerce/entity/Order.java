@@ -17,13 +17,10 @@ import javax.persistence.*;
         private Long id;
 
         @Column(name = "name")
-        private String categoryName;
+        private String orderName;
 
         @Column(name = "imageUrl")
         private String imageUrl;
-
-        @Column(name = "quantity")
-        private int quantity;
 
         @JsonIgnore
         @ManyToOne(fetch = FetchType.EAGER)

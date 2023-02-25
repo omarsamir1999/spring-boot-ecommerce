@@ -28,4 +28,5 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
+
 }
