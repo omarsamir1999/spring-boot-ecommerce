@@ -31,5 +31,8 @@ public class ListOrderController {
         return listOrderRepository.findById(id).orElse(null);
     }
 
-
+    @PostMapping("listOrder/add")
+    public ListOrder addTask(@Valid @RequestBody ListOrder listOrder) {
+        return listOrderRepository.save(listOrder);
+    }
 }
