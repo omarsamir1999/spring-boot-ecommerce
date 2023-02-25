@@ -1,5 +1,6 @@
 package com.luv2code.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,9 +23,9 @@ import javax.persistence.*;
         @Column(name = "imageUrl")
         private String imageUrl;
 
-        @JsonIgnore
+        @JsonBackReference
         @ManyToOne(fetch = FetchType.EAGER)
-        @JoinColumn(name = "list_order_id")
+        @JoinColumn(name = "list_order_id" ,referencedColumnName="id")
         private ListOrder listOrder;
 
     }

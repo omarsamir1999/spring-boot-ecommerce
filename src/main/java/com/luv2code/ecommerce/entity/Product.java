@@ -2,6 +2,7 @@ package com.luv2code.ecommerce.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -24,9 +25,9 @@ public class Product {
     @Column(name = "deal")
     private String deal;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sub_category_id")
+    @JoinColumn(name = "sub_category_id", referencedColumnName="id")
     private SubCategory subCategory;
 
 }
