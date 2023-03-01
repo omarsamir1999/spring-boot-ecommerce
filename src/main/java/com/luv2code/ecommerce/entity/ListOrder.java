@@ -21,6 +21,9 @@ public class ListOrder {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "status")
+    private String status;
+
     @OneToMany(mappedBy = "listOrder")
     private List<Order> orders;
 

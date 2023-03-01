@@ -2,9 +2,7 @@ package com.luv2code.ecommerce.Controller;
 
 
 import com.luv2code.ecommerce.dao.ListOrderRepository;
-import com.luv2code.ecommerce.dao.OrderRepository;
 import com.luv2code.ecommerce.entity.ListOrder;
-import com.luv2code.ecommerce.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,5 +32,10 @@ public class ListOrderController {
     @PostMapping("listOrder/add")
     public ListOrder addTask(@Valid @RequestBody ListOrder listOrder) {
         return listOrderRepository.save(listOrder);
+    }
+
+    @GetMapping("listOrder/active")
+    List<ListOrder> findByStatus() {
+        return listOrderRepository.fetchListOrder();
     }
 }
