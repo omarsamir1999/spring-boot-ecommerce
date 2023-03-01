@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/")
@@ -37,5 +38,14 @@ public class ListOrderController {
     @GetMapping("listOrder/active")
     List<ListOrder> findByStatus() {
         return listOrderRepository.fetchListOrder();
+    }
+    @PutMapping("listOrder/update/{id}")
+    public ListOrder updateAddress(@PathVariable("id") Long id,
+                                 @RequestBody Map<String, String> body){
+
+        ListOrder current = listOrderRepository.findById(id).get();
+        current.setStatus(body.get("status"));
+        listOrderRepository.save(current);
+        return current;
     }
 }
