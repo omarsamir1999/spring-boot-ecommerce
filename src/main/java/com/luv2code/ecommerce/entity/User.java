@@ -24,13 +24,11 @@ public class User implements UserDetails {
     @GeneratedValue
     private Integer id;
 
+    private String name;
     private String email;
 
     private String password;
 
-    private String firstname;
-
-    private String lastname;
     @Enumerated(EnumType.STRING)
     private Role role;
 
