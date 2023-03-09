@@ -28,8 +28,8 @@ public class SubCategoryController {
         return subCategoryRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/subCategory/category/{id}")
-    List<SubCategory> findBySubCate (@PathVariable Long id){
-        return subCategoryRepository.fetchSubCategory(id);
-    }
+//    @GetMapping("/subCategory/category/{id}")
+//    List<SubCategory> findBySubCate (@PathVariable Long id){
+//        return subCategoryRepository.fetchSubCategory(id);
+//    }
 }

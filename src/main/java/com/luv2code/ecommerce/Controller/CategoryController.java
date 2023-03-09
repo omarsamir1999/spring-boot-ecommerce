@@ -3,10 +3,9 @@ package com.luv2code.ecommerce.Controller;
 
 import com.luv2code.ecommerce.dao.CategoryRepository;
 import com.luv2code.ecommerce.entity.Category;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

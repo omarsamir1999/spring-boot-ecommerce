@@ -3,10 +3,9 @@ package com.luv2code.ecommerce.Controller;
 
 import com.luv2code.ecommerce.dao.ListOrderRepository;
 import com.luv2code.ecommerce.entity.ListOrder;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -35,10 +34,10 @@ public class ListOrderController {
         return listOrderRepository.save(listOrder);
     }
 
-    @GetMapping("listOrder/active")
-    List<ListOrder> findByStatus() {
-        return listOrderRepository.fetchListOrder();
-    }
+//    @GetMapping("listOrder/active")
+//    List<ListOrder> findByStatus() {
+//        return listOrderRepository.fetchListOrder();
+//    }
     @PutMapping("listOrder/update/{id}")
     public ListOrder updateAddress(@PathVariable("id") Long id,
                                  @RequestBody Map<String, String> body){

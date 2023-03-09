@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ListOrderRepository extends JpaRepository<ListOrder, Long> {
 
-    @Query("FROM ListOrder WHERE  status = 'false' ")
-    List<ListOrder> fetchListOrder();
+//    @Query("FROM ListOrder WHERE  status = 'false' ")
+//    List<ListOrder> fetchListOrder();
 }

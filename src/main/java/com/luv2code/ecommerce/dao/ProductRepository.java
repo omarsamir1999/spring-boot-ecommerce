@@ -11,8 +11,7 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-   // SELECT * FROM anon.product where anon.product.sub_category_id=1;
-    @Query("FROM Product WHERE sub_category_id =:id ")
-    List<Product> fetchProduct(Long id);
+//    @Query("FROM Product WHERE sub_category_id =:id ")
+//    List<Product> fetchProduct(Long id);
 
 }
