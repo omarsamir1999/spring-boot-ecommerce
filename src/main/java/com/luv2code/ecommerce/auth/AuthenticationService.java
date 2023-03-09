@@ -28,6 +28,7 @@ public class AuthenticationService {
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .phone(request.getPhone())
                 .role(Role.USER)
                 .build();
         var savedUser = repository.save(user);
