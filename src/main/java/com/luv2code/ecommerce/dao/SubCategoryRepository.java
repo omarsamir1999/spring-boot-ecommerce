@@ -12,6 +12,5 @@ import java.util.List;
 
 @Repository
 public interface SubCategoryRepository extends JpaRepository<SubCategory, Long> {
-    @Query("FROM SubCategory where category_id=:id")
-    List<SubCategory> fetchSubCategory(Long id);
+
 }
