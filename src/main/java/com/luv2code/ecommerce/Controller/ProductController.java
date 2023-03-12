@@ -28,10 +28,10 @@ public class ProductController {
         return productRepository.findById(id).orElse(null);
     }
 
-//    @GetMapping("/product/subCategory/{id}")
-//    List<Product> findBySubCate(@PathVariable Long id) {
-//        return productRepository.fetchProduct(id);
-//    }
+    @GetMapping("/product/subCategory/{id}")
+    List<Product> findBySubCate(@PathVariable Long id) {
+        return productRepository.fetchProduct(id);
+    }
 
     @PostMapping("product/add")
     public Product addTask(@Valid @RequestBody Product product) {

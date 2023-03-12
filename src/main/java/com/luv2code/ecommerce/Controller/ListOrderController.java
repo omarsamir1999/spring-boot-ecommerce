@@ -34,10 +34,10 @@ public class ListOrderController {
         return listOrderRepository.save(listOrder);
     }
 
-//    @GetMapping("listOrder/active")
-//    List<ListOrder> findByStatus() {
-//        return listOrderRepository.fetchListOrder();
-//    }
+    @GetMapping("listOrder/active")
+    List<ListOrder> findByStatus() {
+        return listOrderRepository.fetchListOrder();
+    }
     @PutMapping("listOrder/update/{id}")
     public ListOrder updateAddress(@PathVariable("id") Long id,
                                  @RequestBody Map<String, String> body){
