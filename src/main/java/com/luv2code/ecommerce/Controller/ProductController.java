@@ -2,6 +2,7 @@ package com.luv2code.ecommerce.Controller;
 
 
 import com.luv2code.ecommerce.dao.ProductRepository;
+import com.luv2code.ecommerce.entity.Category;
 import com.luv2code.ecommerce.entity.Product;
 import com.luv2code.ecommerce.service.ProductService;
 import jakarta.validation.Valid;
@@ -24,7 +25,11 @@ public class ProductController {
     List<Product> all() {
         return productRepository.findAll();
     }
+    @GetMapping("/product/{id}")
+    Product one(@PathVariable Long id) {
 
+        return productRepository.findById(id).orElse(null);
+    }
     @GetMapping("product/search")
     public ResponseEntity<List<Product>> searchByName(@RequestParam("q") String name) {
         List<Product> products = productService.findByNameContainingIgnoreCase(name);
