@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "product")
 @Data
@@ -28,7 +30,7 @@ public class Product {
     private String deal;
 
     @Column(name = "categoryId")
-    private String categoryId;
+    private Long categoryId;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id", referencedColumnName = "id")

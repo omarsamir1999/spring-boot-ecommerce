@@ -31,5 +31,7 @@ public class OrderEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "list_order_id", referencedColumnName = "id")
     private ListOrder listOrder;
+
+
 }
 
