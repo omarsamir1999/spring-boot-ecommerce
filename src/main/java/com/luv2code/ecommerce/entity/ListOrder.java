@@ -26,7 +26,7 @@ public class ListOrder {
     private String status;
 
     @OneToMany(mappedBy = "listOrder")
-    private List<Order> orders;
+    private List<OrderEntity> orders;
 
 }
 

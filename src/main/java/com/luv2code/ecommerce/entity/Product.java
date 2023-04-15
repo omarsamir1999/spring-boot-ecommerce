@@ -20,14 +20,21 @@ public class Product {
     private String title;
     @Column(name = "image_url")
     private String imageUrl;
+
     @Column(name = "price")
     private int price;
+
     @Column(name = "deal")
     private String deal;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sub_category_id", referencedColumnName="id")
+    @JoinColumn(name = "sub_category_id", referencedColumnName = "id")
     private SubCategory subCategory;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
 }
