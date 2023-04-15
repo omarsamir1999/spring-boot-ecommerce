@@ -27,14 +27,13 @@ public class Product {
     @Column(name = "deal")
     private String deal;
 
+    @Column(name = "categoryId")
+    private String categoryId;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id", referencedColumnName = "id")
     private SubCategory subCategory;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category category;
+
 
 }
