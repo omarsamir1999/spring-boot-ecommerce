@@ -2,12 +2,10 @@ package com.luv2code.ecommerce.Controller;
 
 
 import com.luv2code.ecommerce.dao.OrderRepository;
+import com.luv2code.ecommerce.entity.ListOrder;
 import com.luv2code.ecommerce.entity.OrderEntity;
-import com.luv2code.ecommerce.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -19,13 +17,10 @@ public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private OrderService orderService;
 
-    @GetMapping("/{categoryId}")
-    public ResponseEntity<List<OrderEntity>> getProductsByCategoryId(@PathVariable Long categoryId) {
-        List<OrderEntity> orderEntities = orderService.getProductsByCategoryId(categoryId);
-        return new ResponseEntity<>(orderEntities, HttpStatus.OK);
+    @GetMapping("order/active/{categoryId}")
+    List<OrderEntity> findByStatus(@PathVariable Long categoryId) {
+        return orderRepository.fetchOrder(categoryId);
     }
     @GetMapping("order")
     List<OrderEntity> all() {

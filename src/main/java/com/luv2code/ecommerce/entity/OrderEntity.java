@@ -24,7 +24,7 @@ public class OrderEntity {
     @Column(name = "imageUrl")
     private String imageUrl;
 
-    @Column(name = "category_id")
+    @Column(name = "categoryId")
     private Long categoryId;
 
     @JsonBackReference
