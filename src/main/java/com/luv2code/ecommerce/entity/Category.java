@@ -1,34 +1,33 @@
 package com.luv2code.ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.List;
-@Entity
-@Table(name="category")
-// @Data -- known bug
-@Getter
-@Setter
-public class Category {
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+
+@Entity
+@Table(name = "categories")
+@Data
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private Long categoryId;
 
-    @Column(name = "name")
     private String categoryName;
 
     @Column(name = "imageurl")
     private String imageUrl;
 
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Subcategory> subcategories = new HashSet<>();
 
-    @OneToMany(mappedBy = "category")
-    private List<SubCategory> subCategory;
-
-
+    // constructors, getters and setters
 }
-
 
 
 

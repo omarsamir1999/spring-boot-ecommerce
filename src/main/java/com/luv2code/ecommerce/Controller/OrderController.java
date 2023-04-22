@@ -1,41 +1,62 @@
 package com.luv2code.ecommerce.Controller;
-
-
-import com.luv2code.ecommerce.dao.OrderRepository;
-import com.luv2code.ecommerce.entity.ListOrder;
-import com.luv2code.ecommerce.entity.OrderEntity;
+import com.luv2code.ecommerce.dao.ListOrderRepository;
+import com.luv2code.ecommerce.entity.Order;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("api/")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class OrderController {
 
     @Autowired
-    private OrderRepository orderRepository;
+    private ListOrderRepository orderRepository;
 
-
-    @GetMapping("order/active/{categoryId}")
-    List<OrderEntity> findByStatus(@PathVariable Long categoryId) {
-        return orderRepository.fetchOrder(categoryId);
-    }
-    @GetMapping("order")
-    List<OrderEntity> all() {
-        return orderRepository.findAll();
+    @GetMapping("orders")
+    public ResponseEntity<List<Order>> getAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        return ResponseEntity.ok(orders);
     }
 
-    @GetMapping("order/{id}")
-    OrderEntity one(@PathVariable Long id) {
-        return orderRepository.findById(id).orElse(null);
+    @GetMapping("orders/{id}")
+    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
+
+        Order order = orderRepository.findById(id).orElse(null);
+        if (order != null) {
+            return ResponseEntity.ok(order);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-
-
-    @PostMapping("order/add")
-    public OrderEntity addOrder(@Valid @RequestBody OrderEntity order) {
-        return orderRepository.save(order);
+    @PostMapping("orders/add")
+    public ResponseEntity<Order> addOrder(@Valid @RequestBody Order order) {
+        orderRepository.save(order);
+        return ResponseEntity.ok(order);
     }
+
+    @GetMapping("orders/active")
+    public ResponseEntity<List<Order>> getActiveOrders() {
+        List<Order> activeOrders = orderRepository.fetchListOrder();
+        return ResponseEntity.ok(activeOrders);
+    }
+
+    @PutMapping("/orders/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") Long orderId,
+                                             @Valid @RequestBody Order orderDetails) throws ResourceNotFoundException {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found for this id :: " + orderId));
+
+        order.setOrderDate(orderDetails.getOrderDate());
+        order.setTotalPrice(orderDetails.getTotalPrice());
+
+        final Order updatedOrder = orderRepository.save(order);
+        return ResponseEntity.ok(updatedOrder);
+    }
+
 }

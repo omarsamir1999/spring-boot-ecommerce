@@ -6,36 +6,39 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 @Data
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "name")
+    private Long productId;
+
     private String name;
-    @Column(name = "title")
-    private String title;
-    @Column(name = "image_url")
-    private String imageUrl;
 
-    @Column(name = "price")
-    private int price;
+    private String description;
 
+    private BigDecimal price;
     @Column(name = "deal")
     private String deal;
 
     @Column(name = "categoryId")
     private Long categoryId;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sub_category_id", referencedColumnName = "id")
-    private SubCategory subCategory;
+    @Column(name = "image_url")
+    private String imageUrl;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory_id")
+    private Subcategory subcategory;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<OrderItem> orderItems = new HashSet<>();
 
+    // constructors, getters and setters
 }

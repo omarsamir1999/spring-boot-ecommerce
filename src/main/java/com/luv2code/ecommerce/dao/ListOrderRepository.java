@@ -1,6 +1,6 @@
 package com.luv2code.ecommerce.dao;
 
-import com.luv2code.ecommerce.entity.ListOrder;
+import com.luv2code.ecommerce.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ListOrderRepository extends JpaRepository<ListOrder, Long> {
+public interface ListOrderRepository extends JpaRepository<Order, Long> {
 
-    @Query("FROM ListOrder WHERE  status = 'false' ")
-    List<ListOrder> fetchListOrder();
+    @Query("FROM Order WHERE  status = 'false' ")
+    List<Order> fetchListOrder();
 }

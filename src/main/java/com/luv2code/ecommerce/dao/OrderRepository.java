@@ -1,16 +1,14 @@
 package com.luv2code.ecommerce.dao;
 
-import com.luv2code.ecommerce.entity.ListOrder;
-import com.luv2code.ecommerce.entity.OrderEntity;
+import com.luv2code.ecommerce.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
-    @Query("FROM OrderEntity WHERE CAST(categoryId AS integer) = :categoryId")
-    List<OrderEntity> fetchOrder(Long categoryId);
+public interface OrderRepository extends JpaRepository<OrderItem, Long> {
+//    @Query("FROM OrderItem WHERE CAST(categoryId AS integer) = :categoryId")
+//    List<OrderItem> fetchOrder(Long categoryId);
 }
