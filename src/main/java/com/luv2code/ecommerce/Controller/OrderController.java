@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/")
-@CrossOrigin(origins = "*")
 public class OrderController {
 
     @Autowired
@@ -40,11 +39,11 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
 
-    @GetMapping("orders/active")
-    public ResponseEntity<List<Order>> getActiveOrders() {
-        List<Order> activeOrders = orderRepository.fetchListOrder();
-        return ResponseEntity.ok(activeOrders);
-    }
+//    @GetMapping("orders/active")
+//    public ResponseEntity<List<Order>> getActiveOrders() {
+//        List<Order> activeOrders = orderRepository.fetchListOrder();
+//        return ResponseEntity.ok(activeOrders);
+//    }
 
     @PutMapping("/orders/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") Long orderId,
