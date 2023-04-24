@@ -37,8 +37,8 @@ public class Product {
     @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<OrderItem> orderItems = new HashSet<>();
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<OrderItem> orderItems = new HashSet<>();
 
     // constructors, getters and setters
 }
