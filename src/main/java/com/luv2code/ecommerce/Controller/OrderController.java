@@ -53,6 +53,8 @@ public class OrderController {
 
         order.setOrderDate(orderDetails.getOrderDate());
         order.setTotalPrice(orderDetails.getTotalPrice());
+        order.setOrderStatus(orderDetails.getOrderStatus());
+
 
         final Order updatedOrder = orderRepository.save(order);
         return ResponseEntity.ok(updatedOrder);
