@@ -1,5 +1,6 @@
 package com.luv2code.ecommerce.Controller;
 import com.luv2code.ecommerce.dao.OrderItemRepository;
+import com.luv2code.ecommerce.entity.Order;
 import com.luv2code.ecommerce.entity.OrderItem;
 import com.luv2code.ecommerce.service.OrderItemService;
 import jakarta.validation.Valid;
@@ -35,7 +36,11 @@ public class OrderItemController {
         return orderRepository.findById(id).orElse(null);
     }
 
-
+    @GetMapping("order/cate/{categoryId}")
+    public ResponseEntity<List<OrderItem>> getActiveOrders(@PathVariable  Long categoryId) {
+        List<OrderItem> orderItems =orderRepository.fetchCategoryId(categoryId);
+        return ResponseEntity.ok(orderItems);
+    }
 
     @PostMapping("order/add")
     public OrderItem addOrder(@Valid @RequestBody OrderItem order) {
