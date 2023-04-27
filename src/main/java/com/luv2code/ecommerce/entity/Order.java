@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -20,13 +21,13 @@ public class Order {
     private User user;
 
     @Column(name = "order_date")
-    private LocalDate orderDate;
+    private LocalDateTime orderDate;
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @Column(name = "status")
-    private String status;
+    @Column(name = "order_status")
+    private String orderStatus;
 
 }
 
