@@ -51,8 +51,6 @@ public class OrderController {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found for this id :: " + orderId));
 
-        order.setOrderDate(orderDetails.getOrderDate());
-        order.setTotalPrice(orderDetails.getTotalPrice());
         order.setOrderStatus(orderDetails.getOrderStatus());
 
 
