@@ -14,6 +14,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
     @Query("SELECT i FROM OrderItem i WHERE i.product.categoryId = :categoryId")
     List<OrderItem> fetchCategoryId(Long categoryId);
 
+
     List<OrderItem> findByOrderOrderId(Long orderId);
 
 }
