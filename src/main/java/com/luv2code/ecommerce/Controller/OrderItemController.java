@@ -1,4 +1,5 @@
 package com.luv2code.ecommerce.Controller;
+
 import com.luv2code.ecommerce.dao.OrderItemRepository;
 import com.luv2code.ecommerce.entity.OrderItem;
 import com.luv2code.ecommerce.service.OrderItemService;
@@ -26,6 +27,7 @@ public class OrderItemController {
         List<OrderItem> orderItems = orderItemService.getOrderItemsByOrderId(orderId);
         return ResponseEntity.ok(orderItems);
     }
+
     @GetMapping("order")
     List<OrderItem> all() {
         return orderRepository.findAll();
@@ -37,13 +39,14 @@ public class OrderItemController {
     }
 
 
-
-    @GetMapping("order/orderId/{orderId}/cate/{categoryId}")
-    public ResponseEntity<List<OrderItem>> getActiveOrders(@PathVariable Long categoryId, @PathVariable Long orderId) {
-        List<OrderItem> orderItems = orderRepository.fetchItemsByOrderIdAndCategoryId(orderId, categoryId);
-        return ResponseEntity.ok(orderItems);
+//    @GetMapping("order/active")
+//    List<OrderItem> fetch() {
+//        return orderRepository.findUndeliveredOrders();
+//    }
+    @GetMapping("order/active/{categoryId}")
+    List<OrderItem> fetchProduct(@PathVariable Long categoryId) {
+        return orderRepository.findUndeliveredOrPartiallyDeliveredOrdersByCategoryId(categoryId);
     }
-
     @PostMapping("order/add")
     public OrderItem addOrder(@Valid @RequestBody OrderItem order) {
         return orderRepository.save(order);
