@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.entity;
+package com.luv2code.ecommerce.model.entity;
 
 import jakarta.persistence.*;
 
@@ -13,7 +13,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 @Data
 public class Product {
     @Id
@@ -24,18 +24,24 @@ public class Product {
 
     private String description;
 
-    private BigDecimal price;
-    @Column(name = "deal")
+    private double price;
+
     private String deal;
 
-    @Column(name = "categoryId")
-    private Long categoryId;
-    @Column(name = "image_url")
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status;
+
+    private String categoryName;
+
     private String imageUrl;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Seller seller;
 
 }

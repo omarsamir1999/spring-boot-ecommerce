@@ -1,20 +1,28 @@
-package com.luv2code.ecommerce.entity;
+package com.luv2code.ecommerce.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.math.BigDecimal;
+import lombok.NoArgsConstructor;
+
 
 
 
 @Entity
 @Table(name = "order_items")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long itemId;
+    private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    private Integer quantity;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
@@ -22,10 +30,6 @@ public class OrderItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private Integer quantity;
 
-    private BigDecimal price;
-
-    // constructors, getters and setters
 }
 

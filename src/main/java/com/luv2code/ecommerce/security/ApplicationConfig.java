@@ -1,6 +1,6 @@
 package com.luv2code.ecommerce.security;
 
-import com.luv2code.ecommerce.dao.UserRepository;
+import com.luv2code.ecommerce.dao.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +17,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository repository;
+    private final CustomerRepository repository;
 
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> repository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Customer not found"));
     }
 
     @Bean

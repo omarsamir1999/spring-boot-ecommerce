@@ -1,39 +1,44 @@
-package com.luv2code.ecommerce.entity;
+package com.luv2code.ecommerce.model.entity;
 
+
+
+import java.util.Collection;
+import java.util.List;
+
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-
-
 @Entity
-@Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class User  implements UserDetails {
-
-
+public class Seller implements UserDetails {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer sellerId;
 
     private String name;
     private String email;
 
     private String phone;
-
-    private String address;
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+
+
+    @OneToMany
+    @JsonIgnore
+    private List<Product> product;
 
 
     @Override
@@ -71,3 +76,4 @@ public class User  implements UserDetails {
         return true;
     }
 }
+

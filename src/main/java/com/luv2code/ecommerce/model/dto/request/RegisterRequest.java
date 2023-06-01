@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.auth;
+package com.luv2code.ecommerce.model.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class RegisterRequest {
 
+    private String name;
     private String email;
-    String password;
+    private String phone;
+    private String address;
+    private String password;
 }

@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.entity;
+package com.luv2code.ecommerce.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +35,10 @@ public class Token {
     public boolean expired;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    public User user;
+    @JoinColumn(name = "customer_id")
+    public Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    public Seller seller;
 }

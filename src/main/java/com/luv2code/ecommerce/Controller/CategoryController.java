@@ -1,35 +1,42 @@
 package com.luv2code.ecommerce.Controller;
 
-
-import com.luv2code.ecommerce.dao.CategoryRepository;
-import com.luv2code.ecommerce.entity.Category;
-import jakarta.validation.Valid;
+import com.luv2code.ecommerce.model.entity.Category;
+import com.luv2code.ecommerce.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("api/")
-@CrossOrigin
+@RequestMapping("/api/v1/category")
 public class CategoryController {
 
     @Autowired
-    private CategoryRepository categoryRepository;
-    @GetMapping("category")
-    List<Category> all() {
-        return categoryRepository.findAll();
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
-    @GetMapping("/category/{id}")
-    Category one(@PathVariable Long id) {
-
-        return categoryRepository.findById(id).orElse(null);
+    @GetMapping("")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllCategory();
     }
 
-
-    @PostMapping("category/add")
-    public Category addTask(@Valid @RequestBody Category category){
-        return categoryRepository.save(category);
+    @GetMapping("/{id}")
+    public Category getCategoryById(@PathVariable Long id) {
+        return categoryService.getCategoryById(id);
     }
 
+    @PostMapping("")
+    public Category addCategory(@RequestBody Category category) {
+        categoryService.addCategory(category);
+        return category;
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteCategoryById(@PathVariable Long id) {
+        categoryService.deleteCategoryById(id);
+        return "Department with ID " + id + " has been deleted";
+    }
 }
